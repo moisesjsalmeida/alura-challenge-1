@@ -7,7 +7,9 @@ export const ProfileContainer = styled.div`
   justify-content: flex-end;
   margin-left: auto;
   background: transparent;
-  padding-left: 14rem;
+  width: 20vw;
+  min-width: 10rem;
+  padding-left: 1rem;
 
   & img {
     height: 2rem;
@@ -22,12 +24,6 @@ export const ProfileContainer = styled.div`
     background: transparent;
   }
 
-  @media (max-width: 1213px) {
-    padding-left: 10rem;
-  }
-  @media (max-width: 1021px) {
-    padding-left: 8rem;
-  }
   @media (max-width: 768px) {
     display: none;
   }

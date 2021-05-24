@@ -10,20 +10,15 @@ export const HeaderContainer = styled.header`
   align-items: center;
 
   & > div:first-child {
-    width: 12rem;
-    margin-right: auto;
-    padding-right: 1rem;
-
-    & img {
-      padding-right: 1rem;
-      min-width: 9rem;
-    }
+    width: 20vw !important;
+    padding-right: 5rem;
   }
 
   & input {
     display: block;
-    width: 47rem;
-    margin: 0 auto;
+    width: 60vw;
+    margin: 0 1rem;
+    padding-right: 1rem;
   }
 
   & .searchButton {

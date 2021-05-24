@@ -14,7 +14,7 @@ export const Header = () => {
       </div>
 
       {width > 700 ? (
-        <TextInput type="search" width="47rem" placeholder="Busque por algo" />
+        <TextInput type="search" placeholder="Busque por algo" />
       ) : (
         <button className="searchButton">
           <img src="icons/search.svg" alt="Buscar Projetos" />
