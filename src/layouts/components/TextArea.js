@@ -8,6 +8,7 @@ export const TextArea = styled.textarea`
   padding-top: 1rem;
   width: ${(props) => props.width || '17.5rem'};
   max-width: ${(props) => props.maxWidth};
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 1.05rem;
   line-height: 1.5rem;

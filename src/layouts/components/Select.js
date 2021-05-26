@@ -21,6 +21,10 @@ export const Select = styled.select`
   background-repeat: no-repeat;
   background-size: 12px;
 
+  & option {
+    background: ${colors.background};
+  }
+
   &:hover {
     background: rgba(255, 255, 255, 0.24);
   }

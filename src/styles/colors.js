@@ -29,4 +29,5 @@ export default {
 
   background: darkBlue,
   inputFields: transparent,
+  uiText: white,
 };

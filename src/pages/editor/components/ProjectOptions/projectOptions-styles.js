@@ -49,6 +49,10 @@ export const ProjectOptionsContainer = styled.div`
 `;
 
 export const LanguageAndColorContainer = styled.div`
+  & > select:first-of-type {
+    margin-bottom: 1rem;
+  }
+
   @media (max-width: 768px) {
     width: 100%;
     display: flex;
@@ -57,8 +61,27 @@ export const LanguageAndColorContainer = styled.div`
     justify-content: space-between;
     margin-top: 0;
 
-    & > select {
-      width: 49%;
+    & > select:first-of-type {
+      margin-bottom: 0;
+    }
+
+    & > select,
+    input[type='color'] {
+      width: 33%;
+    }
+  }
+
+  @media (max-width: 450px) {
+    width: 100%;
+    flex-direction: column;
+
+    & > select:first-of-type {
+      margin-bottom: 1rem;
+    }
+
+    & > select,
+    input[type='color'] {
+      width: 100%;
     }
   }
 `;

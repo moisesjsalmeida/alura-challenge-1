@@ -21,27 +21,28 @@ export const CodeInputContainer = styled.div`
 
   & svg {
     margin-left: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
 
     &:first-child {
       margin-left: 1rem;
     }
   }
-`;
 
-export const CodeInput = styled.textarea`
-  resize: none;
-  display: flex;
-  padding-left: 1rem;
-  padding-top: 1rem;
-  width: ${(props) => props.width || '17.5rem'};
-  max-width: ${(props) => props.maxWidth};
-  font-family: 'Fira Code', monospace;
-  font-weight: 400;
-  font-size: 1.05rem;
-  line-height: 1.5rem;
-  background-color: ${colors.darkGray};
-  color: ${colors.white};
-  border: 0;
-  box-shadow: none;
+  & .CodeMirror {
+    padding: 1rem;
+  }
+
+  & > .ReactCodeMirror {
+    font-family: 'Fira Code', monospace;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    & .CodeMirror {
+      height: 29.5rem;
+    }
+  }
 `;

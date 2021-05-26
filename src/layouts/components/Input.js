@@ -8,14 +8,14 @@ export const TextInput = styled.input`
   font-weight: 400;
   font-size: 1.05rem;
   line-height: 1.5rem;
-  color: ${colors.white};
+  color: ${colors.uiText};
   background-color: ${colors.inputFields};
   border: 0;
   border-radius: 8px;
   box-shadow: none;
 
   &::placeholder {
-    color: ${colors.white};
+    color: ${colors.uiText};
     opacity: 0.64;
   }
 

@@ -17,7 +17,7 @@ const Menu = () => {
           </Link>
         </li>
         <li className="menu-item">
-          <Link href="/">
+          <Link href="/community">
             <a>
               <IconContainer>
                 <img src="icons/community_icon.svg" alt="Comunidade" />
