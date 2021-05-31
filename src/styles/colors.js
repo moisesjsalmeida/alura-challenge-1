@@ -13,6 +13,7 @@ const darkBlue = '#051D3B';
 const menuColor = '#2D415B';
 
 const transparent = 'rgba(255, 255, 255, 0.16)';
+const lighterTransparent = 'rgba(0, 0, 0, 0.16);';
 
 export default {
   darkGray,
@@ -26,7 +27,7 @@ export default {
   darkBlue,
   menuColor,
   transparent,
-
+  lighterTransparent,
   background: darkBlue,
   inputFields: transparent,
   uiText: white,

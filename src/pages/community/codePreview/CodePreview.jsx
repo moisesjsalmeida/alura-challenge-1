@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
-import CodeInputContainer from '../../../../layouts/components/CodeInputContainer';
-import MacTopBar from '../../../../layouts/components/MacTopBar';
-import { useCodeEditorContext } from '../../contexts/CodeEditorContext';
-import { CodeEditorContainer } from './codeEditor-styles';
+import React from 'react';
+import CodeInputContainer from '../../../layouts/components/CodeInputContainer';
+import MacTopBar from '../../../layouts/components/MacTopBar';
+import { CodePreviewContainer } from './codePreview-styles';
 
 const CodeMirror = dynamic(
   () => {
@@ -14,8 +14,6 @@ const CodeMirror = dynamic(
     import('codemirror/mode/php/php');
     import('codemirror/mode/r/r');
     import('codemirror/mode/sql/sql');
-    import('codemirror/addon/lint/lint');
-    import('codemirror/addon/edit/closebrackets');
     import('codemirror/theme/material.css');
     import('codemirror/theme/dracula.css');
     import('codemirror/theme/cobalt.css');
@@ -30,47 +28,34 @@ const CodeMirror = dynamic(
   { ssr: false }
 );
 
-const CodeEditor = () => {
-  const { projectColor, projectTheme, language, inputCode, setInputCode } =
-    useCodeEditorContext();
-
-  function handleChange(editor, data, value) {
-    setInputCode(editor);
-  }
-
+function CodePreview({ code, language, theme, color }) {
   return (
-    <CodeEditorContainer>
+    <CodePreviewContainer>
       <div
         style={{
-          background: projectColor,
-          padding: '2rem',
+          background: color,
+          padding: '1.5rem',
           borderRadius: '8px',
           overflow: 'hidden',
         }}
       >
         <CodeInputContainer>
           <MacTopBar />
-
           {CodeMirror && (
             <CodeMirror
-              onChange={handleChange}
-              value={inputCode}
+              value={code}
               options={{
                 lineWrapping: true,
-                lint: true,
-                autoCloseBrackets: true,
-                lineNumbers: false,
-                smartIndent: true,
-                matchBrackets: true,
                 mode: language,
-                theme: projectTheme,
+                theme: theme,
+                readOnly: 'nocursor',
               }}
             />
           )}
         </CodeInputContainer>
       </div>
-    </CodeEditorContainer>
+    </CodePreviewContainer>
   );
-};
+}
 
-export default CodeEditor;
+export default CodePreview;

@@ -1,17 +1,5 @@
-import MainLayout from '../layouts/MainLayout/MainLayout';
-import ProjectOptions from './editor/components/ProjectOptions/ProjectOptions';
-import CodeEditor from './editor/components/CodeEditor/CodeEditor';
-import { CodeEditorContextProvider } from './editor/contexts/CodeEditorContext';
+import EditorPage from './editor';
 
 export default function Home() {
-  return (
-    <>
-      <MainLayout>
-        <CodeEditorContextProvider>
-          <CodeEditor />
-          <ProjectOptions />
-        </CodeEditorContextProvider>
-      </MainLayout>
-    </>
-  );
+  return <EditorPage />;
 }

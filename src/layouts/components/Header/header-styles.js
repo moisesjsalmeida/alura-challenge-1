@@ -10,15 +10,16 @@ export const HeaderContainer = styled.header`
   align-items: center;
 
   & > div:first-child {
-    width: 20vw !important;
+    width: 20vw;
     padding-right: 5rem;
   }
 
   & input {
     display: block;
-    width: 60vw;
+    width: 100%;
     margin: 0 1rem;
     padding-right: 1rem;
+    align-self: left;
   }
 
   & .searchButton {

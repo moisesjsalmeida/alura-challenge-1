@@ -10,6 +10,7 @@
   "dependencies": {
     "babel-plugin-styled-components": "^1.12.0",
     "codemirror": "^5.61.1",
+    "mongodb": "^3.6.9",
     "next": "10.2.0",
     "react": "^16.14.0",
     "react-codemirror": "^1.0.0",

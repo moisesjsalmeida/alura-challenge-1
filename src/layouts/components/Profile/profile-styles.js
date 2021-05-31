@@ -7,9 +7,10 @@ export const ProfileContainer = styled.div`
   justify-content: flex-end;
   margin-left: auto;
   background: transparent;
-  width: 20vw;
+  width: 100%;
   min-width: 10rem;
-  padding-left: 1rem;
+  padding-left: 5rem;
+  cursor: pointer;
 
   & img {
     height: 2rem;
