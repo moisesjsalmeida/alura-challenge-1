@@ -4,12 +4,12 @@ import colors from '../../../../styles/colors';
 export const Hamburger = styled.div`
   display: none;
   cursor: pointer;
+  justify-self: right;
 
   @media (max-width: 768px) {
     display: block;
     width: 40px;
     height: 30px;
-    margin-left: 1rem;
     z-index: 3;
     background-color: transparent;
 

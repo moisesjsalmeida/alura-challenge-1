@@ -5,8 +5,7 @@ import colors from '../../../styles/colors';
 export const MenuContainer = styled.nav`
   display: flex;
   flex-direction: column;
-  width: 20vw;
-  /* margin-right: auto; */
+  width: 100%;
   background: transparent;
 
   & ul {

@@ -1,12 +1,15 @@
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { IconContainer, MenuContainer } from './menu-styles';
 
 const Menu = () => {
+  const router = useRouter();
+
   return (
     <MenuContainer>
       <h4>MENU</h4>
       <ul>
-        <li className="menu-item active">
+        <li className={`menu-item ${router.pathname === '/' && 'active'}`}>
           <Link href="/">
             <a>
               <IconContainer>
@@ -16,7 +19,11 @@ const Menu = () => {
             </a>
           </Link>
         </li>
-        <li className="menu-item">
+        <li
+          className={`menu-item ${
+            router.pathname === '/community' && 'active'
+          }`}
+        >
           <Link href="/community">
             <a>
               <IconContainer>

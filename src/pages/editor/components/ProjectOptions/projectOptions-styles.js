@@ -2,9 +2,7 @@ import styled from 'styled-components';
 import colors from '../../../../styles/colors';
 
 export const ProjectOptionsContainer = styled.div`
-  /* margin-left: auto; */
-  width: 20vw;
-  min-width: 10rem;
+  width: 100%;
 
   & h4 {
     font-weight: 400;

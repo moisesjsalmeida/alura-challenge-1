@@ -4,6 +4,7 @@ import MainLayout from '../../layouts/MainLayout/MainLayout';
 import ProjectOptions from '../editor/components/ProjectOptions/ProjectOptions';
 import CodeEditor from '../editor/components/CodeEditor/CodeEditor';
 import { CodeEditorContextProvider } from '../editor/contexts/CodeEditorContext';
+import EditorContainer from './editor-styles';
 
 export default function EditorPage() {
   return (
@@ -12,8 +13,10 @@ export default function EditorPage() {
         <title>AluraDev - Editor de código</title>
       </Head>
       <CodeEditorContextProvider>
-        <CodeEditor />
-        <ProjectOptions />
+        <EditorContainer>
+          <CodeEditor />
+          <ProjectOptions />
+        </EditorContainer>
       </CodeEditorContextProvider>
     </MainLayout>
   );
