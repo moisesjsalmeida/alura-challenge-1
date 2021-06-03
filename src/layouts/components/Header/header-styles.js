@@ -14,7 +14,7 @@ export const HeaderContainer = styled.header`
     width: 100%;
   }
 
-  & input {
+  & > .search {
     display: block;
     width: 100%;
     padding-right: 1rem;
@@ -44,7 +44,7 @@ export const HeaderContainer = styled.header`
       width: 20%;
     }
 
-    & input {
+    & > .search {
       display: block;
       width: 60%;
       padding-right: 1rem;
@@ -58,12 +58,12 @@ export const HeaderContainer = styled.header`
 `;
 
 export const MobileSearchInput = styled.input`
-  position: absolute;
+  display: none;
+  position: fixed;
   left: 1rem;
   right: 4rem;
   z-index: 4;
-  width: 75% !important;
-  display: flex;
+  width: 65%;
   padding-left: 1rem;
   height: 3.5rem;
   font-weight: 400;
@@ -74,6 +74,14 @@ export const MobileSearchInput = styled.input`
   border: 0;
   border-radius: 8px;
   box-shadow: none;
+
+  transform: translateX(500px);
+  transition-duration: 1s;
+
+  &.mobile-search-open {
+    display: flex;
+    transform: translateX(0);
+  }
 
   &::placeholder {
     color: ${colors.uiText};

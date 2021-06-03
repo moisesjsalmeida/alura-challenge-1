@@ -21,25 +21,33 @@ export const Header = () => {
       </div>
 
       {width > 700 ? (
-        <TextInput type="search" placeholder="Busque por algo" />
+        <TextInput
+          type="search"
+          placeholder="Busque por algo"
+          className="search"
+        />
       ) : (
         <button className="searchButton" onClick={handleOpenSearch}>
           <img src="icons/search.svg" alt="Buscar Projetos" />
         </button>
       )}
 
-      {openSearch && width <= 700 && (
+      {width <= 700 && (
         <MobileSearchInput
           type="search"
           placeholder="Busque por algo"
-          className="mobile-search"
+          className={openSearch && 'mobile-search-open'}
         />
       )}
 
-      <MenuToggle>
-        {width <= 768 && <Menu />}
+      {width > 768 ? (
         <Profile />
-      </MenuToggle>
+      ) : (
+        <MenuToggle>
+          <Menu />
+          <Profile />
+        </MenuToggle>
+      )}
     </HeaderContainer>
   );
 };
