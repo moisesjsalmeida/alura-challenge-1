@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../../styles/colors';
 
 export const HeaderContainer = styled.header`
   padding: 1rem;
@@ -53,5 +54,33 @@ export const HeaderContainer = styled.header`
 
   @media (max-width: 700px) {
     max-width: 95vw;
+  }
+`;
+
+export const MobileSearchInput = styled.input`
+  position: absolute;
+  left: 1rem;
+  right: 4rem;
+  z-index: 4;
+  width: 75% !important;
+  display: flex;
+  padding-left: 1rem;
+  height: 3.5rem;
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.5rem;
+  color: ${colors.uiText};
+  background-color: #2d415a;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: none;
+
+  &::placeholder {
+    color: ${colors.uiText};
+    opacity: 0.64;
+  }
+
+  &:hover {
+    background: #41536a;
   }
 `;

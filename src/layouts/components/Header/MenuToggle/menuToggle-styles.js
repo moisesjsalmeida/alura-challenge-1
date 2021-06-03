@@ -10,7 +10,7 @@ export const Hamburger = styled.div`
     display: block;
     width: 40px;
     height: 30px;
-    z-index: 3;
+    z-index: 5;
     background-color: transparent;
 
     & .first,
@@ -44,61 +44,52 @@ export const Hamburger = styled.div`
 `;
 
 export const MenuToggleContainer = styled.div`
-  width: auto;
+  position: fixed;
+  top: 5.5rem;
+  right: 2rem;
+  width: 16rem;
+  height: 80vh;
+  z-index: 10;
+  background: ${colors.menuColor};
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 
-  @media (max-width: 768px) {
-    ${(props) =>
-      props.open &&
-      `
-      position: absolute;
-      top: 7rem;
-      right: 2rem;
-      width: 16rem;
-      height: 73vh;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
+  transform: translateX(16rem) scaleX(0);
+  transition: transform 0.3s;
 
-      background: ${colors.menuColor};
-      border-radius: 8px;
+  & > * {
+    margin: 2rem 2rem 1rem;
+    display: flex;
+    width: 80%;
+    justify-content: flex-start;
 
-
-      animation: slideIn 0.2s ease-out;
-      
-
-        & > *{
-          margin: 2rem 2rem 1rem;
-          display: flex;
-          width: 80%;
-          justify-content: flex-start;
-
-          &:first-child {
-            padding-bottom: 2rem;
-            border-bottom: 1px solid ${colors.transparent};
-          }
-          
-        }
-      }
-    `}
-
-    @keyframes slideIn {
-      0% {
-        transform: translateX(50%) scaleX(0);
-      }
-      100% {
-        transform: translateX(0) scaleX(100%);
-      }
+    &:first-child {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid ${colors.transparent};
     }
+  }
 
-    @keyframes slideOut {
-      0% {
-        transform: translateX(0) scaleX(100%);
-      }
-      100% {
-        transform: translateX(50%) scaleX(0);
-      }
-    }
+  &.menu-open {
+    display: flex;
+    flex-direction: column;
+    transform: translateX(0) scaleX(1);
   }
 `;
 
-//
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vh;
+  height: 100vh;
+
+  z-index: 4;
+  visibility: hidden;
+  transition: all 0.2s;
+
+  &.overlay-visible {
+    visibility: visible;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+  }
+`;

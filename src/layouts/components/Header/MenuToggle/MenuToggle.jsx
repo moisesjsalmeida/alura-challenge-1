@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Hamburger, MenuToggleContainer } from './menuToggle-styles';
+import { Hamburger, MenuToggleContainer, Overlay } from './menuToggle-styles';
 
 export const MenuToggle = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -15,7 +15,13 @@ export const MenuToggle = ({ children }) => {
         <div className="second"></div>
         <div className="third"></div>
       </Hamburger>
-      <MenuToggleContainer open={open}>{children}</MenuToggleContainer>
+      <MenuToggleContainer className={open && 'menu-open'} open={open}>
+        {children}
+      </MenuToggleContainer>
+      <Overlay
+        className={open && 'overlay-visible'}
+        onClick={handleClickOpen}
+      />
     </>
   );
 };
