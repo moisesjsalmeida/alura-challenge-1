@@ -9,8 +9,13 @@ export const ProfileContainer = styled.div`
   background: transparent;
   width: 100%;
   min-width: 10rem;
-  padding-left: 5rem;
+  padding-left: 0.5rem;
   cursor: pointer;
+
+  & div {
+    display: flex;
+    align-items: center;
+  }
 
   & img {
     height: 2rem;

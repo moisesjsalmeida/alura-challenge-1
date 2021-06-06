@@ -1,13 +1,46 @@
+import { signOut, useSession } from 'next-auth/client';
 import { ProfileContainer } from './profile-styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import useAuthContext from '../../../pages/contexts/authContext';
 
 const Profile = () => {
+  const { handleOpenModal } = useAuthContext();
+  const [session, loading] = useSession();
+
   return (
     <ProfileContainer>
-      <img
-        src="https://avatars.githubusercontent.com/u/34729824?s=400&u=49e597a00f41435cd1546077ed4b1f691359a2b9&v=4"
-        alt="Avatar"
-      />
-      <span>Moisés</span>
+      <div onClick={handleOpenModal}>
+        {session ? (
+          <img src={session.user.image} alt="Avatar" />
+        ) : (
+          <FontAwesomeIcon
+            icon={faUserCircle}
+            className="fas fa-user-circle fa-2x"
+            style={{ color: 'white', marginRight: '1rem' }}
+          />
+        )}
+
+        <span>{session ? session.user.name : 'Login'}</span>
+      </div>
+
+      {session && (
+        <button
+          onClick={signOut}
+          style={{
+            background: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+            marginLeft: '1rem',
+          }}
+        >
+          <FontAwesomeIcon
+            icon={faSignOutAlt}
+            className="fas fa-sign-out-alt fa-2x"
+            style={{ color: 'white' }}
+          />
+        </button>
+      )}
     </ProfileContainer>
   );
 };

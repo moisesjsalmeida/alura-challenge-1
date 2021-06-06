@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import * as htmlToImage from 'html-to-image';
+import { useSession } from 'next-auth/client';
 
 const CodeEditorContext = createContext({});
 
@@ -16,6 +17,8 @@ export function CodeEditorContextProvider({ children }) {
 
   const [loading, setLoading] = useState(false);
 
+  const [session] = useSession();
+
   function handleChangeColor(newColor) {
     setProjectColor(newColor);
   }
@@ -30,6 +33,9 @@ export function CodeEditorContextProvider({ children }) {
       inputCode,
       projectTitle,
       projectDescription,
+      user: session.user._id,
+      userName: session.user.name,
+      userAvatar: session.user.image,
     };
 
     const data = await fetch(`http://localhost:3000/api/saveProject`, {

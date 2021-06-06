@@ -25,6 +25,8 @@ export default function Community({ projects }) {
                 <ProjectInfo
                   projectTitle={project.projectTitle}
                   projectDescription={project.projectDescription}
+                  projectAuthor={project.userName}
+                  projectAuthorAvatar={project.userAvatar}
                 />
               </CommunityItemContainer>
             ))}
