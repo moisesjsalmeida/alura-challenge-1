@@ -46,7 +46,6 @@ export function CodeEditorContextProvider({ children }) {
 
   function exportJPG() {
     htmlToImage.toJpeg(projectToExport).then(function (dataUrl) {
-      console.log(projectToExport);
       var link = document.createElement('a');
       link.download = 'meu-projeto.jpeg';
       link.href = dataUrl;

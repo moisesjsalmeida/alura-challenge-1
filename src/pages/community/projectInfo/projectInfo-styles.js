@@ -7,6 +7,7 @@ export const InfoContainer = styled.div`
   padding: 2rem;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  height: fit-content;
 
   & h3 {
     font-size: 1.313rem;
@@ -20,18 +21,30 @@ export const InfoContainer = styled.div`
     line-height: 1.5rem;
   }
 
-  &:hover {
-    & > div {
-      display: flex;
+  & > div {
+    transform: translateY(-100%) scaleY(0%);
+    height: 0;
+    transition: all 0.3s;
+
+    @media (max-width: 768px) {
+      transform: translateY(0) scaleY(100%);
+      margin-top: 2rem;
+      height: auto;
+      transition: none;
     }
+  }
+
+  &:hover > div {
+    transform: translateY(0) scaleY(100%);
+    margin-top: 2rem;
+    height: auto;
   }
 `;
 
 export const CommunityInfoContainer = styled.div`
-  display: none;
-  margin-top: 2rem;
+  display: flex;
+
   align-items: center;
-  transition: transform 1s;
 
   & .action-item {
     cursor: pointer;

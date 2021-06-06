@@ -36,7 +36,11 @@ export default function Community({ projects }) {
 
 export async function getServerSideProps(context) {
   const { db } = await connectToDatabase();
-  const data = await db.collection('projects').find({}).toArray();
+  const data = await db
+    .collection('projects')
+    .find({})
+    .sort({ _id: -1 })
+    .toArray();
 
   const projects = JSON.parse(JSON.stringify(data));
 
