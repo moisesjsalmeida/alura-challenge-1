@@ -7,7 +7,8 @@ export default function MacTopBar() {
       style={{
         position: 'absolute',
         zIndex: 3,
-        padding: '0.5rem',
+        top: '1rem',
+        left: '1rem',
       }}
     >
       <svg

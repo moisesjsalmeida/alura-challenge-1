@@ -23,7 +23,7 @@ const CodeMirror = dynamic(
     import('codemirror/theme/oceanic-next.css');
     import('codemirror/theme/rubyblue.css');
     import('codemirror/theme/solarized.css');
-    return import('react-codemirror');
+    return import('react-codemirror2').then((mod) => mod.Controlled);
   },
   { ssr: false }
 );

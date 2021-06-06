@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { useEffect, useRef } from 'react';
 import CodeInputContainer from '../../../../layouts/components/CodeInputContainer';
 import MacTopBar from '../../../../layouts/components/MacTopBar';
 import { useCodeEditorContext } from '../../contexts/CodeEditorContext';
@@ -25,27 +26,39 @@ const CodeMirror = dynamic(
     import('codemirror/theme/oceanic-next.css');
     import('codemirror/theme/rubyblue.css');
     import('codemirror/theme/solarized.css');
-    return import('react-codemirror');
+    return import('react-codemirror2').then((mod) => mod.Controlled);
   },
   { ssr: false }
 );
 
 const CodeEditor = () => {
-  const { projectColor, projectTheme, language, inputCode, setInputCode } =
-    useCodeEditorContext();
+  const {
+    projectColor,
+    projectTheme,
+    language,
+    inputCode,
+    setInputCode,
+    setProjectToExport,
+  } = useCodeEditorContext();
+
+  const codeRef = useRef();
+
+  useEffect(() => setProjectToExport(codeRef.current), []);
 
   function handleChange(editor, data, value) {
-    setInputCode(editor);
+    setInputCode(value);
   }
 
   return (
     <CodeEditorContainer>
       <div
+        ref={codeRef}
         style={{
           background: projectColor,
           padding: '2rem',
           borderRadius: '8px',
-          overflow: 'hidden',
+          overflowX: 'auto',
+          height: 'auto',
         }}
       >
         <CodeInputContainer>
@@ -53,17 +66,19 @@ const CodeEditor = () => {
 
           {CodeMirror && (
             <CodeMirror
-              onChange={handleChange}
+              onBeforeChange={handleChange}
               value={inputCode}
               options={{
                 lineWrapping: true,
                 lint: true,
-                autoCloseBrackets: true,
                 lineNumbers: false,
                 smartIndent: true,
                 matchBrackets: true,
+                autoCloseBrackets: true,
                 mode: language,
                 theme: projectTheme,
+                scrollbarStyle: null,
+                viewportMargin: Infinity,
               }}
             />
           )}
