@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
+import * as htmlToImage from 'html-to-image';
 
 const CodeEditorContext = createContext({});
 
@@ -11,6 +12,7 @@ export function CodeEditorContextProvider({ children }) {
   const [inputCode, setInputCode] = useState('');
   const [projectTitle, setProjectTitle] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
+  const [projectToExport, setProjectToExport] = useState(null);
 
   const [loading, setLoading] = useState(false);
 
@@ -42,6 +44,16 @@ export function CodeEditorContextProvider({ children }) {
     router.push('/community');
   }
 
+  function exportJPG() {
+    htmlToImage.toJpeg(projectToExport).then(function (dataUrl) {
+      console.log(projectToExport);
+      var link = document.createElement('a');
+      link.download = 'meu-projeto.jpeg';
+      link.href = dataUrl;
+      link.click();
+    });
+  }
+
   return (
     <CodeEditorContext.Provider
       value={{
@@ -50,6 +62,7 @@ export function CodeEditorContextProvider({ children }) {
         inputCode,
         projectTheme,
         loading,
+        projectToExport,
         setProjectColor,
         handleChangeColor,
         setLanguage,
@@ -58,6 +71,8 @@ export function CodeEditorContextProvider({ children }) {
         handleSaveProject,
         setProjectTitle,
         setProjectDescription,
+        setProjectToExport,
+        exportJPG,
       }}
     >
       {children}

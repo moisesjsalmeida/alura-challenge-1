@@ -19,6 +19,7 @@ const ProjectOptions = () => {
     setProjectTitle,
     setProjectDescription,
     handleSaveProject,
+    exportJPG,
   } = useCodeEditorContext();
 
   function handleChangeLanguage(e) {
@@ -50,23 +51,27 @@ const ProjectOptions = () => {
 
       <h4>PERSONALIZAÇÃO</h4>
       <LanguageAndColorContainer>
-        <Select name="language" onChange={handleChangeLanguage}>
+        <Select
+          name="language"
+          onChange={handleChangeLanguage}
+          defaultValue="javascript"
+        >
           <option value="css">CSS</option>
           <option value="go">Go</option>
           <option value="xml">HTML</option>
-          <option value="javascript" selected>
-            JavaScript
-          </option>
+          <option value="javascript">JavaScript</option>
           <option value="php">PHP</option>
           <option value="python">Python</option>
           <option value="r">R</option>
           <option value="sql">SQL</option>
         </Select>
-        <Select name="theme" onChange={handleChangeTheme}>
+        <Select
+          name="theme"
+          onChange={handleChangeTheme}
+          defaultValue="dracula"
+        >
           <option value="cobalt">Cobalt</option>
-          <option value="dracula" selected>
-            Dracula
-          </option>
+          <option value="dracula">Dracula</option>
           <option value="default">Light</option>
           <option value="material">Material</option>
           <option value="mdn-like">MDN</option>
@@ -87,6 +92,9 @@ const ProjectOptions = () => {
         ) : (
           'Salvar Projeto'
         )}
+      </Button>
+      <Button outlined onClick={exportJPG}>
+        Exportar como JPG
       </Button>
     </ProjectOptionsContainer>
   );

@@ -31,6 +31,7 @@ export const ProjectOptionsContainer = styled.div`
 
   & button {
     margin-top: 0;
+    margin-bottom: 1rem;
   }
 
   @media (max-width: 768px) {
