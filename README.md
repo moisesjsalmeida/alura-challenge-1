@@ -12,6 +12,7 @@ Esta aplicação foi desenvolvida durante o primeiro Alura Challenge, voltado pa
 - [CodeMirror](https://codemirror.net/)
 - [react-codemirror2](https://github.com/scniro/react-codemirror2)
 - [html-to-image](https://github.com/bubkoo/html-to-image)
+- [NextAuth](https://next-auth.js.org/)
 - [MongoDB](https://www.mongodb.com/)
 
 ## Execute este projeto localmente:

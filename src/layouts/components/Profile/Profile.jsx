@@ -6,7 +6,7 @@ import useAuthContext from '../../../pages/contexts/authContext';
 
 const Profile = () => {
   const { handleOpenModal } = useAuthContext();
-  const [session, loading] = useSession();
+  const [session] = useSession();
 
   return (
     <ProfileContainer>

@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import * as htmlToImage from 'html-to-image';
 import { useSession } from 'next-auth/client';
+import useAuthContext from '../../contexts/authContext';
 
 const CodeEditorContext = createContext({});
 
@@ -18,14 +19,36 @@ export function CodeEditorContextProvider({ children }) {
   const [loading, setLoading] = useState(false);
 
   const [session] = useSession();
+  const { handleOpenModal } = useAuthContext();
 
   function handleChangeColor(newColor) {
     setProjectColor(newColor);
   }
 
-  // Essa função deverá ser alterada futuramente para incluir dados do autor do projeto
   async function handleSaveProject() {
     setLoading(true);
+
+    if (!session) {
+      handleOpenModal();
+      setLoading(false);
+      return;
+    }
+    if (inputCode.length === 0) {
+      console.log('sem código');
+      setLoading(false);
+      return;
+    }
+    if (projectTitle.length === 0) {
+      console.log('sem título');
+      setLoading(false);
+      return;
+    }
+    if (projectDescription.length === 0) {
+      console.log('sem descrição');
+      setLoading(false);
+      return;
+    }
+
     const projectInfo = {
       projectColor,
       projectTheme,
@@ -48,6 +71,7 @@ export function CodeEditorContextProvider({ children }) {
     console.log(res);
     setLoading(false);
     router.push('/community');
+    return;
   }
 
   function exportJPG() {
