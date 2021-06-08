@@ -1,6 +1,9 @@
 import { createContext, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import * as htmlToImage from 'html-to-image';
+import { useSession } from 'next-auth/client';
+import useAuthContext from '../../contexts/authContext';
+import { store } from 'react-notifications-component';
 
 const CodeEditorContext = createContext({});
 
@@ -13,16 +16,76 @@ export function CodeEditorContextProvider({ children }) {
   const [projectTitle, setProjectTitle] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
   const [projectToExport, setProjectToExport] = useState(null);
-
   const [loading, setLoading] = useState(false);
+
+  const [session] = useSession();
+  const { handleOpenModal } = useAuthContext();
 
   function handleChangeColor(newColor) {
     setProjectColor(newColor);
   }
 
-  // Essa função deverá ser alterada futuramente para incluir dados do autor do projeto
   async function handleSaveProject() {
     setLoading(true);
+
+    if (!session) {
+      handleOpenModal();
+      setLoading(false);
+      return;
+    }
+
+    if (inputCode.length < 3) {
+      store.addNotification({
+        title: 'Ops!',
+        message: 'Seu projeto precisa de mais código!',
+        type: 'warning',
+        insert: 'bottom',
+        container: 'bottom-right',
+        animationIn: ['animate__animated', 'animate__fadeIn'],
+        animationOut: ['animate__animated', 'animate__fadeOut'],
+        dismiss: {
+          duration: 3000,
+          onScreen: true,
+        },
+      });
+      setLoading(false);
+      return;
+    }
+    if (projectTitle.length === 0) {
+      store.addNotification({
+        title: 'Ops!',
+        message: 'Seu projeto precisa de um título!',
+        type: 'warning',
+        insert: 'bottom',
+        container: 'bottom-right',
+        animationIn: ['animate__animated', 'animate__fadeIn'],
+        animationOut: ['animate__animated', 'animate__fadeOut'],
+        dismiss: {
+          duration: 3000,
+          onScreen: true,
+        },
+      });
+      setLoading(false);
+      return;
+    }
+    if (projectDescription.length === 0) {
+      store.addNotification({
+        title: 'Ops!',
+        message: 'Seu projeto precisa de uma descrição!',
+        type: 'warning',
+        insert: 'bottom',
+        container: 'bottom-right',
+        animationIn: ['animate__animated', 'animate__fadeIn'],
+        animationOut: ['animate__animated', 'animate__fadeOut'],
+        dismiss: {
+          duration: 3000,
+          onScreen: true,
+        },
+      });
+      setLoading(false);
+      return;
+    }
+
     const projectInfo = {
       projectColor,
       projectTheme,
@@ -30,6 +93,9 @@ export function CodeEditorContextProvider({ children }) {
       inputCode,
       projectTitle,
       projectDescription,
+      user: session.user._id,
+      userName: session.user.name,
+      userAvatar: session.user.image,
     };
 
     const data = await fetch(`http://localhost:3000/api/saveProject`, {
@@ -40,8 +106,22 @@ export function CodeEditorContextProvider({ children }) {
 
     const res = await data.json();
     console.log(res);
+    store.addNotification({
+      title: 'Sucesso!',
+      message: 'Seu projeto foi salvo e está disponível em nossa comunidade',
+      type: 'success',
+      insert: 'bottom',
+      container: 'bottom-right',
+      animationIn: ['animate__animated', 'animate__fadeIn'],
+      animationOut: ['animate__animated', 'animate__fadeOut'],
+      dismiss: {
+        duration: 3000,
+        onScreen: true,
+      },
+    });
     setLoading(false);
     router.push('/community');
+    return;
   }
 
   function exportJPG() {

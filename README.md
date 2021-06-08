@@ -12,6 +12,8 @@ Esta aplicação foi desenvolvida durante o primeiro Alura Challenge, voltado pa
 - [CodeMirror](https://codemirror.net/)
 - [react-codemirror2](https://github.com/scniro/react-codemirror2)
 - [html-to-image](https://github.com/bubkoo/html-to-image)
+- [react-notifications-component](https://www.npmjs.com/package/react-notifications-component/v/2.4.1)
+- [NextAuth](https://next-auth.js.org/)
 - [MongoDB](https://www.mongodb.com/)
 
 ## Execute este projeto localmente:
@@ -24,7 +26,7 @@ Esta aplicação foi desenvolvida durante o primeiro Alura Challenge, voltado pa
 
    `cd alura-challenge-1`
 
-3. Utilize o exemplo de variável de ambiente (`.env.local.example`) para configurar a conexão com o banco de dados, lembrando de remover a extensão .example.
+3. Utilize o exemplo de variável de ambiente (`.env.local.example`) para configurar a conexão com o banco de dados e a configuração do Github App, lembrando de remover a extensão .example.
 
 4. Instale as dependências com o comando `npm install`.
 

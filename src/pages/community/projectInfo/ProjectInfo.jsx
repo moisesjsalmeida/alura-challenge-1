@@ -1,8 +1,16 @@
 import React from 'react';
-import Profile from '../../../layouts/components/Profile/Profile';
-import { CommunityInfoContainer, InfoContainer } from './projectInfo-styles';
+import {
+  Author,
+  CommunityInfoContainer,
+  InfoContainer,
+} from './projectInfo-styles';
 
-function ProjectInfo({ projectTitle, projectDescription }) {
+function ProjectInfo({
+  projectTitle,
+  projectDescription,
+  projectAuthor,
+  projectAuthorAvatar,
+}) {
   return (
     <InfoContainer>
       <h3>{projectTitle}</h3>
@@ -43,7 +51,10 @@ function ProjectInfo({ projectTitle, projectDescription }) {
           </svg>
           <span>25</span>
         </span>
-        <Profile />
+        <Author>
+          <img src={projectAuthorAvatar} alt="Avatar" />
+          <span>{projectAuthor}</span>
+        </Author>
       </CommunityInfoContainer>
     </InfoContainer>
   );
