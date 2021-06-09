@@ -5,7 +5,8 @@ import 'animate.css/animate.compat.css';
 import GlobalStyle from '../styles/global';
 
 import 'codemirror/lib/codemirror.css';
-import { AuthContextProvider } from './contexts/authContext';
+import { AuthContextProvider } from '../hooks/authContext';
+import MainLayout from '../layouts/MainLayout/MainLayout';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps }) {
       <ReactNotification />
       <GlobalStyle />
       <AuthContextProvider>
-        <Component {...pageProps} />
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
       </AuthContextProvider>
     </Provider>
   );

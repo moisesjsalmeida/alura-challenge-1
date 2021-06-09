@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../../../styles/colors';
+import colors from '../../../../styles/colors';
 
 export const InfoContainer = styled.div`
   background-color: ${colors.lighterTransparent};
@@ -8,6 +8,11 @@ export const InfoContainer = styled.div`
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   height: fit-content;
+
+  & a {
+    text-decoration: none;
+    color: ${colors.uiText};
+  }
 
   & h3 {
     font-size: 1.313rem;

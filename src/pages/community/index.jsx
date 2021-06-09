@@ -1,7 +1,6 @@
 import Head from 'next/head';
-import MainLayout from '../../layouts/MainLayout/MainLayout';
-import CodePreview from './codePreview/CodePreview';
-import ProjectInfo from './projectInfo/ProjectInfo';
+import CodePreview from './components/codePreview/CodePreview';
+import ProjectInfo from './components/projectInfo/ProjectInfo';
 import { CommunityContainer, CommunityItemContainer } from './community-styles';
 import { connectToDatabase } from '../../utils/mongodb';
 
@@ -11,27 +10,27 @@ export default function Community({ projects }) {
       <Head>
         <title>AluraDev - Comunidade</title>
       </Head>
-      <MainLayout>
-        <CommunityContainer>
-          {projects &&
-            projects.map((project) => (
-              <CommunityItemContainer key={project._id}>
-                <CodePreview
-                  code={project.inputCode}
-                  language={project.language}
-                  theme={project.projectTheme}
-                  color={project.projectColor}
-                />
-                <ProjectInfo
-                  projectTitle={project.projectTitle}
-                  projectDescription={project.projectDescription}
-                  projectAuthor={project.userName}
-                  projectAuthorAvatar={project.userAvatar}
-                />
-              </CommunityItemContainer>
-            ))}
-        </CommunityContainer>
-      </MainLayout>
+
+      <CommunityContainer>
+        {projects &&
+          projects.map((project) => (
+            <CommunityItemContainer key={project._id}>
+              <CodePreview
+                code={project.inputCode}
+                language={project.language}
+                theme={project.projectTheme}
+                color={project.projectColor}
+              />
+              <ProjectInfo
+                projectTitle={project.projectTitle}
+                projectDescription={project.projectDescription}
+                projectAuthor={project.userName}
+                projectAuthorAvatar={project.userAvatar}
+                projectLink={project._id}
+              />
+            </CommunityItemContainer>
+          ))}
+      </CommunityContainer>
     </>
   );
 }
