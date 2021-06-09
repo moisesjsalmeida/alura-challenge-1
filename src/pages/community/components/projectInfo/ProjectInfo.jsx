@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import {
   Author,
   CommunityInfoContainer,
@@ -10,10 +11,15 @@ function ProjectInfo({
   projectDescription,
   projectAuthor,
   projectAuthorAvatar,
+  projectLink,
 }) {
   return (
     <InfoContainer>
-      <h3>{projectTitle}</h3>
+      <Link href={`community/projects/${projectLink}`}>
+        <a>
+          <h3>{projectTitle}</h3>
+        </a>
+      </Link>
       <p>{projectDescription}</p>
 
       <CommunityInfoContainer>

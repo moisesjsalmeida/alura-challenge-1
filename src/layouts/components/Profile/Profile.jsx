@@ -2,7 +2,7 @@ import { signOut, useSession } from 'next-auth/client';
 import { ProfileContainer } from './profile-styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import useAuthContext from '../../../pages/contexts/authContext';
+import useAuthContext from '../../../hooks/authContext';
 
 const Profile = () => {
   const { handleOpenModal } = useAuthContext();

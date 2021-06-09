@@ -21,7 +21,7 @@ const Menu = () => {
         </li>
         <li
           className={`menu-item ${
-            router.pathname === '/community' && 'active'
+            router.pathname.includes('/community') && 'active'
           }`}
         >
           <Link href="/community">

@@ -3,7 +3,7 @@ import { signIn } from 'next-auth/client';
 import { Modal, Overlay } from './loginModal-styles';
 import Button from '../Button';
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
-import useAuthContext from '../../../pages/contexts/authContext';
+import useAuthContext from '../../../hooks/authContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const LoginModal = () => {

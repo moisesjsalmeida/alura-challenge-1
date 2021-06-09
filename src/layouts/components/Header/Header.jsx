@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Link from 'next/link';
 import useWindowDimensions from '../../../hooks/getWindowDimensions';
 import TextInput from '../Input';
 import Menu from '../Menu/Menu';
@@ -17,7 +18,11 @@ export const Header = () => {
   return (
     <HeaderContainer>
       <div>
-        <img src="Logo.svg" alt="Alura Dev" />
+        <Link href="/">
+          <a>
+            <img src="Logo.svg" alt="Alura Dev" />
+          </a>
+        </Link>
       </div>
 
       {width > 700 ? (
