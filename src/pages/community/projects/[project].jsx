@@ -65,6 +65,7 @@ const Project = ({ projectData }) => {
               overflowX: 'auto',
               height: 'fit-content',
               width: '100%',
+              marginBottom: '1.5rem',
             }}
           >
             <CodeInputContainer>

@@ -3,7 +3,7 @@ import colors from '../../styles/colors';
 
 export const TextInput = styled.input`
   display: flex;
-  padding-left: 1rem;
+  padding: 0 1rem;
   height: ${(props) => (props.height ? props.height : '3.5rem')};
   font-weight: 400;
   font-size: 1.05rem;

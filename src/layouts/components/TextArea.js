@@ -4,8 +4,7 @@ import colors from '../../styles/colors';
 export const TextArea = styled.textarea`
   resize: none;
   display: flex;
-  padding-left: 1rem;
-  padding-top: 1rem;
+  padding: 1rem;
   width: ${(props) => props.width || '17.5rem'};
   max-width: ${(props) => props.maxWidth};
   font-family: 'Inter', sans-serif;
