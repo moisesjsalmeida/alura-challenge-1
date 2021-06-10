@@ -13,3 +13,5 @@ export const CommunityContainer = styled.div`
 `;
 
 export const CommunityItemContainer = styled.div``;
+
+export default CommunityContainer;

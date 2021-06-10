@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import * as htmlToImage from 'html-to-image';
 import { useSession } from 'next-auth/client';
-import useAuthContext from '../../../hooks/authContext';
+import useAuthContext from './authContext';
 import { store } from 'react-notifications-component';
 
 const CodeEditorContext = createContext({});
@@ -159,4 +159,6 @@ export function CodeEditorContextProvider({ children }) {
   );
 }
 
-export const useCodeEditorContext = () => useContext(CodeEditorContext);
+const useCodeEditorContext = () => useContext(CodeEditorContext);
+
+export default useCodeEditorContext;

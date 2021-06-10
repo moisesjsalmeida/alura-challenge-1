@@ -7,7 +7,7 @@ import TextInput from '../../../../layouts/components/Input';
 import TextArea from '../../../../layouts/components/TextArea';
 import Select from '../../../../layouts/components/Select';
 import Button from '../../../../layouts/components/Button';
-import { useCodeEditorContext } from '../../contexts/CodeEditorContext';
+import useCodeEditorContext from '../../../../hooks/CodeEditorContext';
 
 const ProjectOptions = () => {
   const {

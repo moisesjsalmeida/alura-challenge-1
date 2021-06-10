@@ -8,3 +8,5 @@ export const CodeEditorContainer = styled.div`
     margin: 0 auto;
   }
 `;
+
+export default CodeEditorContainer;

@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import ProjectOptions from '../editor/components/ProjectOptions/ProjectOptions';
 import CodeEditor from '../editor/components/CodeEditor/CodeEditor';
-import { CodeEditorContextProvider } from '../editor/contexts/CodeEditorContext';
+import { CodeEditorContextProvider } from '../../hooks/CodeEditorContext';
 import EditorContainer from './editor-styles';
 
 export default function EditorPage() {

@@ -105,3 +105,5 @@ export const Author = styled.div`
     background: transparent;
   }
 `;
+
+export default InfoContainer;

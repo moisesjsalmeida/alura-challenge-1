@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import React from 'react';
 import CodeInputContainer from '../../../../layouts/components/CodeInputContainer';
 import MacTopBar from '../../../../layouts/components/MacTopBar';
-import { CodePreviewContainer } from './codePreview-styles';
+import CodePreviewContainer from './codePreview-styles';
 
 const CodeMirror = dynamic(
   () => {

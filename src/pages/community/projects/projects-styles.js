@@ -74,3 +74,5 @@ export const ProjectProperties = styled.div`
     background: rgba(255, 255, 255, 0.24);
   }
 `;
+
+export default ProjectsContainer;

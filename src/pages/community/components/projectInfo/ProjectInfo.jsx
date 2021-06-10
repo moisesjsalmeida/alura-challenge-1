@@ -38,7 +38,7 @@ function ProjectInfo({
               fill="white"
             />
           </svg>
-          <span>10</span>
+          <span>0</span>
         </span>
         <span className="action-item">
           <svg
@@ -55,7 +55,7 @@ function ProjectInfo({
               fill="white"
             />
           </svg>
-          <span>25</span>
+          <span>0</span>
         </span>
         <Author>
           <img src={projectAuthorAvatar} alt="Avatar" />

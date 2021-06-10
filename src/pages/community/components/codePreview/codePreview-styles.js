@@ -7,3 +7,5 @@ export const CodePreviewContainer = styled.div`
     height: ${(props) => (props.detailed ? '5000px' : '25vh')};
   }
 `;
+
+export default CodePreviewContainer;

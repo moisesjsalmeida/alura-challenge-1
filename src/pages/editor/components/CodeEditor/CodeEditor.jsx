@@ -2,8 +2,8 @@ import dynamic from 'next/dynamic';
 import { useEffect, useRef } from 'react';
 import CodeInputContainer from '../../../../layouts/components/CodeInputContainer';
 import MacTopBar from '../../../../layouts/components/MacTopBar';
-import { useCodeEditorContext } from '../../contexts/CodeEditorContext';
-import { CodeEditorContainer } from './codeEditor-styles';
+import useCodeEditorContext from '../../../../hooks/CodeEditorContext';
+import CodeEditorContainer from './codeEditor-styles';
 
 const CodeMirror = dynamic(
   () => {

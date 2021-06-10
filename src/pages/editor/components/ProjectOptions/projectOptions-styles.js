@@ -99,3 +99,5 @@ export const ColorSelection = styled.input.attrs({ type: 'color' })`
     width: 49%;
   }
 `;
+
+export default ProjectOptionsContainer;
