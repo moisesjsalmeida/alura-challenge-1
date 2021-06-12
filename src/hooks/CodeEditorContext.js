@@ -98,14 +98,11 @@ export function CodeEditorContextProvider({ children }) {
       userAvatar: session.user.image,
     };
 
-    const data = await fetch(
-      `https://alura-challenge-1-kappa.vercel.app/api/saveProject`,
-      {
-        body: JSON.stringify(projectInfo),
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST',
-      }
-    );
+    const data = await fetch(`${process.env.API_BASE_URL}/api/saveProject`, {
+      body: JSON.stringify(projectInfo),
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+    });
 
     const res = await data.json();
     console.log(res);
