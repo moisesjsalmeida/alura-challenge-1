@@ -35,7 +35,7 @@ MONGODB_URI= <Url de conexão com seu banco de dados Mongo>
 MONGODB_DB= <DB a ser utilizada no projeto>
 GITHUB_ID= <ID do projeto Github (para utilizar OAuth)>
 GITHUB_SECRET= <Secret do projeto Github (para utilizar OAuth)>
-API_BASE_URL= <URL base para realizar chamadas à API>
+NEXT_PUBLIC_API_BASE_URL= <URL base para realizar chamadas à API>
 NEXTAUTH_URL= <URL a ser utilizada como callback para o nextauth. Em ambiente de produção, a ausência desta variável causará falhas no Login>
 ```
 
