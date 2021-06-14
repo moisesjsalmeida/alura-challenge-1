@@ -93,38 +93,59 @@ export function CodeEditorContextProvider({ children }) {
       inputCode,
       projectTitle,
       projectDescription,
-      user: session.user._id,
+      user: session.id,
       userName: session.user.name,
       userAvatar: session.user.image,
+      likes: {},
+      comments: {},
     };
 
-    const data = await fetch(
-      `https://alura-challenge-1-kappa.vercel.app/api/saveProject`,
-      {
-        body: JSON.stringify(projectInfo),
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST',
-      }
-    );
+    try {
+      const data = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/saveProject`,
+        {
+          body: JSON.stringify(projectInfo),
+          headers: { 'Content-Type': 'application/json' },
+          method: 'POST',
+        }
+      );
 
-    const res = await data.json();
-    console.log(res);
-    store.addNotification({
-      title: 'Sucesso!',
-      message: 'Seu projeto foi salvo e está disponível em nossa comunidade',
-      type: 'success',
-      insert: 'bottom',
-      container: 'bottom-right',
-      animationIn: ['animate__animated', 'animate__fadeIn'],
-      animationOut: ['animate__animated', 'animate__fadeOut'],
-      dismiss: {
-        duration: 3000,
-        onScreen: true,
-      },
-    });
-    setLoading(false);
-    router.push('/community');
-    return;
+      const res = await data.json();
+      console.log(res);
+      store.addNotification({
+        title: 'Sucesso!',
+        message: 'Seu projeto foi salvo e está disponível em nossa comunidade',
+        type: 'success',
+        insert: 'bottom',
+        container: 'bottom-right',
+        animationIn: ['animate__animated', 'animate__fadeIn'],
+        animationOut: ['animate__animated', 'animate__fadeOut'],
+        dismiss: {
+          duration: 3000,
+          onScreen: true,
+        },
+      });
+      setLoading(false);
+      router.push('/community');
+      return;
+    } catch (e) {
+      console.log(e);
+      store.addNotification({
+        title: 'Erro',
+        message: 'Ocorreu um erro ao salvar seu projeto.',
+        type: 'danger',
+        insert: 'bottom',
+        container: 'bottom-right',
+        animationIn: ['animate__animated', 'animate__fadeIn'],
+        animationOut: ['animate__animated', 'animate__fadeOut'],
+        dismiss: {
+          duration: 3000,
+          onScreen: true,
+        },
+      });
+      setLoading(false);
+      return;
+    }
   }
 
   function exportJPG() {

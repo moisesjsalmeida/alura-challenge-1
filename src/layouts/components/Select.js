@@ -16,7 +16,7 @@ export const Select = styled.select`
   border-radius: 8px;
   box-shadow: none;
   appearance: none;
-  background-image: url('icons/down_arrow.svg');
+  background-image: url('/icons/down_arrow.svg');
   background-position: right 1rem top 50%;
   background-repeat: no-repeat;
   background-size: 12px;

@@ -20,7 +20,7 @@ export const Header = () => {
       <div>
         <Link href="/">
           <a>
-            <img src="Logo.svg" alt="Alura Dev" />
+            <img src="/Logo.svg" alt="Alura Dev" />
           </a>
         </Link>
       </div>
@@ -33,7 +33,7 @@ export const Header = () => {
         />
       ) : (
         <button className="searchButton" onClick={handleOpenSearch}>
-          <img src="icons/search.svg" alt="Buscar Projetos" />
+          <img src="/icons/search.svg" alt="Buscar Projetos" />
         </button>
       )}
 

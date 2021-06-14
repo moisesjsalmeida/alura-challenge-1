@@ -13,7 +13,7 @@ const Menu = () => {
           <Link href="/">
             <a>
               <IconContainer>
-                <img src="icons/code_icon.svg" alt="Editor de código" />
+                <img src="/icons/code_icon.svg" alt="Editor de código" />
               </IconContainer>
               <p>Editor de código</p>
             </a>
@@ -27,7 +27,7 @@ const Menu = () => {
           <Link href="/community">
             <a>
               <IconContainer>
-                <img src="icons/community_icon.svg" alt="Comunidade" />
+                <img src="/icons/community_icon.svg" alt="Comunidade" />
               </IconContainer>
               <p>Comunidade</p>
             </a>
