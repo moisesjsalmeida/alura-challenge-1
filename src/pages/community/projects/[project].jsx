@@ -1,18 +1,16 @@
 import React from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import {
-  ProjectAndPropertiesContainer,
+import ProjectsContainer, {
   ProjectDetailsContainer,
   ProjectProperties,
-  ProjectsContainer,
 } from './projects-styles';
 import { connectToDatabase } from '../../../utils/mongodb';
 
 import CodeInputContainer from '../../../layouts/components/CodeInputContainer';
 import MacTopBar from '../../../layouts/components/MacTopBar';
-import TextInput from '../../../layouts/components/Input';
-import TextArea from '../../../layouts/components/TextArea';
+
+import Comments from '../../../layouts/components/Comments';
 
 const CodeMirror = dynamic(
   () => {
@@ -49,61 +47,60 @@ const LANGUAGES = {
   sql: 'SQL',
 };
 
-const Project = ({ projectData }) => {
+const Project = ({ projectData, comments }) => {
   return (
     <>
       <Head>
         <title>AluraDev - Comunidade</title>
       </Head>
       <ProjectsContainer>
-        <ProjectAndPropertiesContainer>
-          <div
-            style={{
-              background: projectData.projectColor,
-              padding: '2rem',
-              borderRadius: '8px',
-              overflowX: 'auto',
-              height: 'fit-content',
-              width: '100%',
-              marginBottom: '1.5rem',
-            }}
-          >
-            <CodeInputContainer>
-              <MacTopBar />
+        <div
+          style={{
+            background: projectData.projectColor,
+            padding: '2rem',
+            borderRadius: '8px',
+            overflowX: 'auto',
+            height: 'fit-content',
+            width: '100%',
+            marginBottom: '1.5rem',
+          }}
+        >
+          <CodeInputContainer>
+            <MacTopBar />
 
-              {CodeMirror && (
-                <CodeMirror
-                  value={projectData.inputCode}
-                  options={{
-                    readOnly: 'nocursor',
-                    lineWrapping: true,
-                    mode: projectData.language,
-                    theme: projectData.projectTheme,
-                    scrollbarStyle: null,
-                    viewportMargin: Infinity,
-                  }}
-                />
-              )}
-            </CodeInputContainer>
+            {CodeMirror && (
+              <CodeMirror
+                value={projectData.inputCode}
+                options={{
+                  readOnly: 'nocursor',
+                  lineWrapping: true,
+                  mode: projectData.language,
+                  theme: projectData.projectTheme,
+                  scrollbarStyle: null,
+                  viewportMargin: Infinity,
+                }}
+              />
+            )}
+          </CodeInputContainer>
+        </div>
+
+        <ProjectDetailsContainer>
+          <h4>AUTOR</h4>
+          <div className="user-profile">
+            <img src={projectData.userAvatar} alt="Avatar" />
+            <p>{projectData.userName}</p>
           </div>
+          <h4>DETALHES</h4>
 
-          <ProjectDetailsContainer>
-            <h4>AUTOR</h4>
-            <div className="user-profile">
-              <img src={projectData.userAvatar} alt="Avatar" />
-              <p>{projectData.userName}</p>
-            </div>
-            <h4>DETALHES</h4>
-
-            <ProjectProperties>
-              {LANGUAGES[projectData.language]}
-            </ProjectProperties>
-            <ProjectProperties>{projectData.projectTitle}</ProjectProperties>
-            <ProjectProperties>
-              {projectData.projectDescription}
-            </ProjectProperties>
-          </ProjectDetailsContainer>
-        </ProjectAndPropertiesContainer>
+          <ProjectProperties>
+            {LANGUAGES[projectData.language]}
+          </ProjectProperties>
+          <ProjectProperties>{projectData.projectTitle}</ProjectProperties>
+          <ProjectProperties>
+            {projectData.projectDescription}
+          </ProjectProperties>
+        </ProjectDetailsContainer>
+        <Comments projectId={projectData._id} comments={comments} />
       </ProjectsContainer>
     </>
   );
@@ -114,13 +111,19 @@ export default Project;
 export async function getServerSideProps({ query }) {
   const { db } = await connectToDatabase();
   const ObjectId = require('mongodb').ObjectID;
-  const data = await db
+  const pdata = await db
     .collection('projects')
     .findOne({ _id: new ObjectId(query.project) });
 
-  const projectData = JSON.parse(JSON.stringify(data));
+  const cdata = await db
+    .collection('comments')
+    .find({ projectId: query.project })
+    .toArray();
+
+  const projectData = JSON.parse(JSON.stringify(pdata));
+  const comments = JSON.parse(JSON.stringify(cdata));
 
   return {
-    props: { projectData },
+    props: { projectData, comments },
   };
 }

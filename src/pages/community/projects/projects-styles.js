@@ -2,10 +2,6 @@ import styled from 'styled-components';
 import colors from '../../../styles/colors';
 
 export const ProjectsContainer = styled.div`
-  /* display: flex; */
-`;
-
-export const ProjectAndPropertiesContainer = styled.div`
   display: grid;
   grid-template-columns: 75% 25%;
   grid-gap: 1rem;
@@ -22,6 +18,7 @@ export const ProjectDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  grid-row: span 2;
 
   & .user-profile {
     display: flex;

@@ -8,8 +8,14 @@ export default NextAuth({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
-    // ...add more providers here
   ],
+
+  callbacks: {
+    session: async (session, user) => {
+      session.id = user.id;
+      return Promise.resolve(session);
+    },
+  },
 
   // A database is optional, but required to persist accounts in a database
   database: process.env.MONGODB_URI,

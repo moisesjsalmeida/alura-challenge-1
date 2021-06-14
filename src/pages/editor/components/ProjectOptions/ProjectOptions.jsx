@@ -88,7 +88,7 @@ const ProjectOptions = () => {
       </LanguageAndColorContainer>
       <Button filled onClick={handleSaveProject}>
         {loading ? (
-          <img src="icons/loading.svg" alt="Carregando" />
+          <img src="/icons/loading.svg" alt="Carregando" />
         ) : (
           'Salvar Projeto'
         )}
