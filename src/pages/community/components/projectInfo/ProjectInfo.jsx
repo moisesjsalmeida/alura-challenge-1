@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Author,
@@ -12,7 +12,18 @@ function ProjectInfo({
   projectAuthor,
   projectAuthorAvatar,
   projectLink,
+  projectComments,
+  projectLikes,
 }) {
+  const [commentCount, setCommentCount] = useState(0);
+
+  useEffect(() => {
+    if (typeof projectComments !== 'undefined') {
+      setCommentCount(projectComments.length);
+    }
+  }, []);
+
+  console.log(commentCount);
   return (
     <InfoContainer>
       <Link href={`community/projects/${projectLink}`}>
@@ -38,7 +49,7 @@ function ProjectInfo({
               fill="white"
             />
           </svg>
-          <span>0</span>
+          <span>{commentCount}</span>
         </span>
         <span className="action-item">
           <svg
