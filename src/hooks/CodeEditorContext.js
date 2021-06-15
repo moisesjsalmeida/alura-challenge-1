@@ -96,8 +96,8 @@ export function CodeEditorContextProvider({ children }) {
       user: session.id,
       userName: session.user.name,
       userAvatar: session.user.image,
-      likes: {},
-      comments: {},
+      likes: [],
+      comments: [],
     };
 
     try {
