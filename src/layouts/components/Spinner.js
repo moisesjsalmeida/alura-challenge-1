@@ -2,11 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SpinnerContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+
+  & img {
+    position: absolute;
+    width: 3rem;
+    top: 50%;
+    left: 50%;
+  }
 `;
 
 const Spinner = () => {

@@ -7,7 +7,7 @@ export const InfoContainer = styled.div`
   padding: 2rem;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  height: fit-content;
+  min-height: fit-content;
 
   & a {
     text-decoration: none;
