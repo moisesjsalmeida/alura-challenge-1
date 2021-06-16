@@ -27,6 +27,7 @@ export default function Community({ projects }) {
                 projectAuthor={project.userName}
                 projectAuthorAvatar={project.userAvatar}
                 projectLink={project._id}
+                projectId={project._id}
                 projectComments={project.comments}
                 projectLikes={project.likes}
               />
