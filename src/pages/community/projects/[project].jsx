@@ -11,6 +11,7 @@ import CodeInputContainer from '../../../layouts/components/CodeInputContainer';
 import MacTopBar from '../../../layouts/components/MacTopBar';
 
 import Comments from '../../../layouts/components/Comments';
+import Like from '../../../layouts/components/Like';
 
 const CodeMirror = dynamic(
   () => {
@@ -51,7 +52,7 @@ const Project = ({ projectData, comments }) => {
   return (
     <>
       <Head>
-        <title>AluraDev - Comunidade</title>
+        <title>AluraDev - {projectData.projectTitle}</title>
       </Head>
       <ProjectsContainer>
         <div
@@ -91,7 +92,6 @@ const Project = ({ projectData, comments }) => {
             <p>{projectData.userName}</p>
           </div>
           <h4>DETALHES</h4>
-
           <ProjectProperties>
             {LANGUAGES[projectData.language]}
           </ProjectProperties>
@@ -99,7 +99,15 @@ const Project = ({ projectData, comments }) => {
           <ProjectProperties>
             {projectData.projectDescription}
           </ProjectProperties>
+          <div>
+            <Like
+              contained
+              projectId={projectData._id}
+              projectLikes={projectData.likes}
+            />
+          </div>
         </ProjectDetailsContainer>
+
         <Comments projectId={projectData._id} comments={comments} />
       </ProjectsContainer>
     </>
