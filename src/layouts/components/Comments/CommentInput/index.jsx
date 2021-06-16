@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useSession } from 'next-auth/client';
 import { store } from 'react-notifications-component';
 import CommentInputContainer from './styles.js';
@@ -6,12 +6,16 @@ import TextArea from '../../TextArea';
 import Button from '../../Button';
 import useAuthContext from '../../../../hooks/authContext.js';
 
-const CommentInput = ({ projectId, setHasNew }) => {
+const CommentInput = ({ projectId, content, setContent }) => {
   const [loading, setLoading] = useState(false);
+  const [formContent, setFormContent] = useState('');
   const [session] = useSession();
-  const commentRef = useRef(null);
 
   const { handleOpenModal } = useAuthContext();
+
+  function handleFormInput() {
+    setFormContent();
+  }
 
   async function handleCommentSubmit(e) {
     e.preventDefault();
@@ -43,15 +47,15 @@ const CommentInput = ({ projectId, setHasNew }) => {
       return;
     }
 
-    const commentInfo = {
-      newComment,
-      projectId,
-      user: session.id,
-      userName: session.user.name,
-      userAvatar: session.user.image,
-    };
-
     try {
+      const commentInfo = {
+        newComment,
+        projectId,
+        user: session.id,
+        userName: session.user.name,
+        userAvatar: session.user.image,
+      };
+
       const data = await fetch(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/saveComment`,
         {
@@ -76,7 +80,7 @@ const CommentInput = ({ projectId, setHasNew }) => {
           onScreen: true,
         },
       });
-      commentRef.current.value = '';
+      setContent([...content, commentInfo]);
     } catch (e) {
       console.log(e);
       store.addNotification({
@@ -93,9 +97,8 @@ const CommentInput = ({ projectId, setHasNew }) => {
         },
       });
     }
-
     setLoading(false);
-    setHasNew(true);
+    setFormContent('');
     return;
   }
 
@@ -106,7 +109,8 @@ const CommentInput = ({ projectId, setHasNew }) => {
         placeholder="Envie seu comentário!"
         rows={4}
         name="commentText"
-        ref={commentRef}
+        value={formContent}
+        onChange={handleFormInput}
       />
       <Button outlined width="19%">
         {loading ? <img src="/icons/loading.svg" alt="Carregando" /> : 'Enviar'}

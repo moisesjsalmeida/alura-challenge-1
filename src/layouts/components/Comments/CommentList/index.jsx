@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
 import {
   Comment,
   CommentHeader,
@@ -7,11 +6,10 @@ import {
   EmptyComments,
 } from './styles';
 
-const CommentList = ({ comments, hasNew, setHasNew }) => {
-  useEffect(() => setHasNew(false), [hasNew]);
+const CommentList = ({ comments }) => {
   return (
     <>
-      {comments.length > 0 || hasNew ? (
+      {comments.length > 0 ? (
         comments.map((comment) => (
           <Comment key={comment._id}>
             <CommentHeader>
