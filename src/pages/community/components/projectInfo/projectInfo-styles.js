@@ -67,12 +67,7 @@ export const CommunityInfoContainer = styled.div`
 
     & .commentIcon *:hover {
       fill: ${colors.blue100};
-      transition: fill 0.3s;
-    }
-
-    & .heartIcon *:hover {
-      fill: #ef4610;
-      transition: fill 0.3s;
+      transition: fill 0.2s;
     }
 
     & span {
