@@ -14,7 +14,6 @@ export default async function handler(req, res) {
           { _id: new ObjectId(req.body.projectId) },
           { $addToSet: { comments: responseComments.insertedId } }
         );
-      console.dir(responseProject);
       res.status(201).json(responseComments);
     } catch (error) {
       console.log(error);
