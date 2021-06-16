@@ -107,8 +107,9 @@ const Project = ({ projectData, comments }) => {
             />
           </div>
         </ProjectDetailsContainer>
-
-        <Comments projectId={projectData._id} comments={comments} />
+        <section id="comments">
+          <Comments projectId={projectData._id} comments={comments} />
+        </section>
       </ProjectsContainer>
     </>
   );
