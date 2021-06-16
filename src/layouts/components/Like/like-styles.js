@@ -3,6 +3,8 @@ import colors from '../../../styles/colors';
 
 export const LikeButton = styled.svg`
   margin-right: 0.5rem;
+  cursor: pointer;
+
   & * {
     ${(props) => props.liked && 'fill: #ef4610'};
   }
